@@ -1,0 +1,43 @@
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.12.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone@7.8.3/babel.js"></script>
+    <style>
+        .weekday {
+            float: left;
+            border-style: solid;
+            border-width: thin;
+            padding-left: 4%;
+            padding-right: 4%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            background-color: ;
+        }
+    </style>
+    <script type="text/babel">
+        function Weekday({style, className='', ...rest}) {
+            return <div className={`weekday ${className}`} style={{...style}}{...rest} />
+        }
+        function UserTODOList() {
+            const curr = new Date
+            const first = curr.getDate() - curr.getDay() + 1
+            const last = first + 4
+
+            const firstDay = new Date(curr.setDate(first)).toDateString()
+            const lastDay = new Date(curr.setDate(last)).toDateString()
+            return(
+                <>
+                    <div>Week of <strong>{firstDay}</strong> to <strong>{lastDay}</strong></div>
+                    <Weekday style={{backgroundColor: 'coral'}}>Monday</Weekday>
+                    <Weekday style={{backgroundColor: 'lightblue'}}>Tuesday</Weekday>
+                    <Weekday style={{backgroundColor: 'pink'}}>Wednesday</Weekday>
+                    <Weekday style={{backgroundColor: 'lightgoldenrodyellow'}}>Thursday</Weekday>
+                    <Weekday style={{backgroundColor: 'mediumpurple'}}>Friday</Weekday>
+                </>
+            )
+        }
+
+        ReactDOM.render(<UserTODOList />, document.getElementById("root"))
+    </script>
+</body>
