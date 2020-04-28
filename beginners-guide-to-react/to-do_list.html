@@ -11,7 +11,7 @@
         .weekcase {
             border: 1px solid black;
             height: 30px;
-            width: 110px;
+            width: 150px;
             text-align: center;
             float: initial;
         }
@@ -22,8 +22,12 @@
             text-align: center;
             float: initial;
         }
-        .todoThings:hover {
+        .weekcase:hover {
             cursor: pointer;
+        }
+        button {
+            margin-bottom: 5px;
+            margin-top: 10px;
         }
     </style>
     <script type="text/babel">
@@ -40,25 +44,98 @@
         function Weekday({style, className='', ...rest}) {
             return <div className={`weekday ${className}`} style={{...style}}{...rest} />
         }
+        function handleClick() {
+            setCounterMonday(window.localStorage.getItem('counterMonday')+1)
+        }
+        function TODOThingsCaseMonday() {
+            const [counterMonday, setCounterMonday] = React.useState(
+                () => window.localStorage.getItem('counterMonday') || 0
+            )
+
+            React.useEffect(() => {
+                window.localStorage.setItem('counterMonday', counterMonday)
+            })
+            console.log(counterMonday)
+
+            for (let index = 0; index < counterMonday; index++) {
+                element += <div></div>
+                
+            }
+            return null
+        }
+        function TODOThingsCaseTuesday() {
+            const [counterTuesday, setCounterTuesday] = React.useState(
+                () => window.localStorage.getItem('counterTuesday') || ''
+            )
+
+            React.useEffect(() => {
+                window.localStorage.setItem('counterTuesday', counterTuesday)
+            })
+
+            return null
+        }
+        function TODOThingsCaseWednesday() {
+            const [counterWednesday, setCounterWednesday] = React.useState(
+                () => window.localStorage.getItem('counterWednesday') || ''
+            )
+
+            React.useEffect(() => {
+                window.localStorage.setItem('counterWednesday', counterWednesday)
+            })
+
+            return null
+        }
+        function TODOThingsCaseThursday() {
+            const [counterThursday, setCounterThursday] = React.useState(
+                () => window.localStorage.getItem('counterThursday') || ''
+            )
+
+            React.useEffect(() => {
+                window.localStorage.setItem('counterThursday', counterThursday)
+            })
+
+            return null
+        }
+        function TODOThingsCaseFriday() {
+            const [counterFriday, setCounterFriday] = React.useState(
+                () => window.localStorage.getItem('counterFriday') || 0
+            )
+
+            React.useEffect(() => {
+                window.localStorage.setItem('counterFriday', counterFriday)
+            })
+
+            return null
+        }
         function UserTODOList() {
             const [firstDay, lastDay] = weekDate()
             const element = 
                 <>
                 <div>Week of <strong>{firstDay}</strong> to <strong>{lastDay}</strong></div>
                 <div className="weekday" id="monday">
+                    <button onClick={handleClick}>Add task Monday</button>
                     <Weekday className="weekcase" style={{backgroundColor: 'coral'}}>Monday</Weekday>
+                    <TODOThingsCaseMonday />
                 </div>
                 <div className="weekday" id="tuesday">
+                    <button>Add task Tuesday</button>
                     <Weekday className="weekcase" style={{backgroundColor: 'lightblue'}}>Tuesday</Weekday>
+                    <TODOThingsCaseTuesday />
                 </div>
                 <div className="weekday" id="wednesday">
+                    <button>Add task Wednesday</button>
                     <Weekday className="weekcase" style={{backgroundColor: 'pink'}}>Wednesday</Weekday>
+                    <TODOThingsCaseWednesday />
                 </div>
                 <div className="weekday" id="thursday">
+                    <button>Add task Thursday</button>
                     <Weekday className="weekcase" style={{backgroundColor: 'lightgoldenrodyellow'}}>Thursday</Weekday>
+                    <TODOThingsCaseThursday />
                 </div>
                 <div className="weekday" id="friday">
+                    <button>Add task Friday</button>
                     <Weekday className="weekcase" style={{backgroundColor: 'mediumpurple'}}>Friday</Weekday>
+                    <TODOThingsCaseFriday />
                 </div>
                 </>
             return element
