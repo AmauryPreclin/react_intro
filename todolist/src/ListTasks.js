@@ -10,13 +10,15 @@ const ListTasks = React.forwardRef((props, ref) => {
     },
   }));
 
-  const RenderTasks = () => {
-    const element = tasks.map((task) => <Task children={task}></Task>);
+  const renderTasks = () => {
+    const element = tasks.map((task, index) => (
+      <Task texte={task} key={index} />
+    ));
     return element;
   };
 
-  //return <div>{renderTasks}</div>;
-  return <RenderTasks />;
+  return <div>{renderTasks()}</div>;
+  //return <RenderTasks />;
 });
 
 export default ListTasks;

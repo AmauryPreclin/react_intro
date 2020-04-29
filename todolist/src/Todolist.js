@@ -1,5 +1,4 @@
 import React from "react";
-import Task from "./Task.js";
 import ListTasks from "./ListTasks.js";
 
 function Todolist(props) {
@@ -12,7 +11,6 @@ function Todolist(props) {
     if (event.target.elements.addTask.value === "") {
       alert("You entered an empty string");
     } else {
-      console.log(taskName);
       listTasksRef.current.updateTasks(taskName);
       setTaskName("");
     }
