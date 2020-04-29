@@ -1,16 +1,20 @@
 import React from "react";
 import "./App.css";
-import { Todolist } from "./Todolist";
+import { Todolist } from "./Todolist.js";
+import { WeekDate } from "./WeekDate.js";
 
 function App() {
   return (
-    <div>
-      <Todolist title="Monday" />
-      <Todolist title="Tusday" />
-      <Todolist title="Wednesday" />
-      <Todolist title="Thursday" />
-      <Todolist title="Friday" />
-    </div>
+    <>
+      <WeekDate />
+      <div id="app-container">
+        <Todolist title="Monday" />
+        <Todolist title="Tusday" />
+        <Todolist title="Wednesday" />
+        <Todolist title="Thursday" />
+        <Todolist title="Friday" />
+      </div>
+    </>
   );
 }
 

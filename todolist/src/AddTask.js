@@ -19,7 +19,7 @@ const AddTask = (props) => {
   return (
     <div>
       <div>
-        <span>Task:</span>
+        <span>Task: </span>
         <input value={taskName} onChange={handleChange}></input>
       </div>
       <button onClick={handleClick} type="button">{`Add task ${title}`}</button>

@@ -4,6 +4,7 @@ import React from "react";
 // Internal
 import { AddTask } from "./AddTask.js";
 import { Task } from "./Task.js";
+import "./Todolist.css";
 
 const Todolist = (props) => {
   const { title } = props;
@@ -17,8 +18,9 @@ const Todolist = (props) => {
   };
 
   const removeTask = (index) => {
-    tasks.splice(index, 1);
-    setTasks([...tasks]);
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks([...newTasks]);
   };
 
   // Markup
@@ -30,7 +32,7 @@ const Todolist = (props) => {
   };
 
   return (
-    <div>
+    <div className="todolist">
       <h2>{title}</h2>
       <AddTask addTask={addTask} title={title} />
       <br />

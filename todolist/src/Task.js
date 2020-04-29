@@ -11,10 +11,12 @@ function Task(props) {
   };
 
   return (
-    <>
+    <div className="task">
       <div>{texte}</div>
-      <button onClick={handleClick}>Remove task</button>
-    </>
+      <button className="taskButton" onClick={handleClick}>
+        Remove task
+      </button>
+    </div>
   );
 }
 
