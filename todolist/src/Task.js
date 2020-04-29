@@ -2,14 +2,16 @@ import React from "react";
 import "./Task.css";
 
 function Task(props) {
-  const content = props.texte;
+  // props = { texte : 'jskladjsal' }
+  // const texte = props.texte;
+  const { texte } = props;
 
   return (
     <>
-      <div>{content}</div>
+      <div>{texte}</div>
       <button>Remove task</button>
     </>
   );
 }
 
-export default Task;
+export { Task };
