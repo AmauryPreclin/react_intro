@@ -8,15 +8,24 @@ function Todolist(props) {
     return tasks.map((task) => <div>{task}</div>);
   };
 
-  const handleClick = () => {
-    setTasks([...tasks, "tasks"]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const task = event.target.elements.addTask.value;
+    setTasks([...tasks, task]);
     console.log(tasks);
   };
 
   return (
     <div>
-      <button onClick={handleClick}>{`Add task ${title}`}</button>
       <h2>{title}</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="addTask">Task:</label>
+          <input id="addTask"></input>
+        </div>
+        <button type="submit">{`Add task ${title}`}</button>
+      </form>
+      <br />
       <div>{renderTasks()}</div>
     </div>
   );
