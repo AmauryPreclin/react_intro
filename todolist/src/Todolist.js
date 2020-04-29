@@ -1,18 +1,29 @@
 import React from "react";
+import Task from "./Task.js";
 
 function Todolist(props) {
   const { title } = props;
   const [tasks, setTasks] = React.useState([]);
+  const [taskName, setTaskName] = React.useState("");
 
   const renderTasks = () => {
-    return tasks.map((task) => <div>{task}</div>);
+    const element = tasks.map((task) => <Task children={task}></Task>);
+    return element;
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const task = event.target.elements.addTask.value;
-    setTasks([...tasks, task]);
-    console.log(tasks);
+    if (event.target.elements.addTask.value === "") {
+      alert("You entered an empty string");
+    } else {
+      //const task = event.target.elements.addTask.value;
+      setTasks([...tasks, taskName]);
+      setTaskName("");
+    }
+  };
+
+  const handleChange = (event) => {
+    setTaskName(event.target.value);
   };
 
   return (
@@ -21,7 +32,7 @@ function Todolist(props) {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="addTask">Task:</label>
-          <input id="addTask"></input>
+          <input value={taskName} onChange={handleChange} id="addTask"></input>
         </div>
         <button type="submit">{`Add task ${title}`}</button>
       </form>
