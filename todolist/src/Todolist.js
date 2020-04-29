@@ -16,10 +16,15 @@ const Todolist = (props) => {
     setTasks([...tasks, taskName]);
   };
 
+  const removeTask = (index) => {
+    tasks.splice(index, 1);
+    setTasks([...tasks]);
+  };
+
   // Markup
   const renderTasks = () => {
     const element = tasks.map((task, index) => (
-      <Task texte={task} key={index} />
+      <Task texte={task} index={index} removeTask={removeTask} key={index} />
     ));
     return element;
   };
