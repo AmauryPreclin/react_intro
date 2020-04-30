@@ -41,3 +41,8 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+.ul {
+  display: flex;
+  justify-content: space-around;
+}

@@ -11,3 +11,8 @@ h2 {
 button:hover {
   cursor: pointer;
 }
+
+.todolistAlone {
+  display: flex;
+  justify-content: flex-end;
+}

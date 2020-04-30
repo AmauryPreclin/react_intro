@@ -7,10 +7,10 @@ import { Task } from "./Task.js";
 import "./Todolist.css";
 
 const Todolist = (props) => {
-  const { title } = props;
+  const { title, className, setTasks, tasks } = props;
 
   // Hooks
-  const [tasks, setTasks] = React.useState([]);
+  //const [tasks, setTasks] = React.useState([]);
 
   // Handlers
   const addTask = (taskName) => {
@@ -25,14 +25,14 @@ const Todolist = (props) => {
 
   const upTask = (index) => {
     if (index === 0) return;
-    [tasks[index], tasks[index - 1]] = [tasks[index - 1], [tasks[index]]];
+    [tasks[index], tasks[index - 1]] = [tasks[index - 1], tasks[index]];
     const newTasks = [...tasks];
     setTasks([...newTasks]);
   };
 
   const downTask = (index) => {
     if (index === tasks.length - 1) return;
-    [tasks[index], tasks[index + 1]] = [tasks[index + 1], [tasks[index]]];
+    [tasks[index], tasks[index + 1]] = [tasks[index + 1], tasks[index]];
     const newTasks = [...tasks];
     setTasks([...newTasks]);
   };
@@ -53,7 +53,7 @@ const Todolist = (props) => {
   };
 
   return (
-    <div className="todolist">
+    <div className={`todolist ${className}`}>
       <h2>{title}</h2>
       <AddTask addTask={addTask} title={title} />
       <br />
