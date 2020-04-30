@@ -1,29 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Header.css";
 
 function Header() {
   return (
     <nav>
-      <ul className="ul">
-        <li>
+      <div className="header">
+        <div className="link">
           <Link to="/">Home</Link>
-        </li>
-        <li>
+        </div>
+        <div className="link">
           <Link to="/monday">Monday</Link>
-        </li>
-        <li>
+        </div>
+        <div className="link">
           <Link to="/tuesday">Tuesday</Link>
-        </li>
-        <li>
+        </div>
+        <div className="link">
           <Link to="/wednesday">Wednesday</Link>
-        </li>
-        <li>
+        </div>
+        <div className="link">
           <Link to="/thursday">Thursday</Link>
-        </li>
-        <li>
+        </div>
+        <div className="link">
           <Link to="/friday">Friday</Link>
-        </li>
-      </ul>
+        </div>
+      </div>
     </nav>
   );
 }
