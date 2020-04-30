@@ -21,15 +21,11 @@ function Task(props) {
   return (
     <div className="task">
       <div>{texte}</div>
-      <button className="taskButton" onClick={handleClickRemove}>
-        Remove task
-      </button>
-      <button className="taskButton" onClick={handleClickUp}>
-        Up
-      </button>
-      <button className="taskButton" onClick={handleClickDown}>
-        Down
-      </button>
+      <div className="taskButton">
+        <button onClick={handleClickRemove}>Remove task</button>
+        <button onClick={handleClickUp}>Up</button>
+        <button onClick={handleClickDown}>Down</button>
+      </div>
     </div>
   );
 }

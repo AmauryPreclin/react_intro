@@ -2,15 +2,11 @@
   cursor: pointer;
 }
 
+.taskButton {
+  display: flex;
+  justify-content: space-between;
+}
+
 .task:hover {
   border: black solid 1px;
-}
-
-.task {
-  position: relative;
-  text-align: justify;
-}
-
-.task {
-  justify-content: space-between;
 }
