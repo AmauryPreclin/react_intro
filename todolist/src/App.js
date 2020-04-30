@@ -9,7 +9,7 @@ function App() {
       <WeekDate />
       <div id="app-container">
         <Todolist title="Monday" />
-        <Todolist title="Tusday" />
+        <Todolist title="Tuesday" />
         <Todolist title="Wednesday" />
         <Todolist title="Thursday" />
         <Todolist title="Friday" />

@@ -1,6 +1,5 @@
 .taskButton:hover {
   cursor: pointer;
-  visibility: visible;
 }
 
 .task:hover {
@@ -10,4 +9,8 @@
 .task {
   position: relative;
   text-align: justify;
+}
+
+.task {
+  justify-content: space-between;
 }
