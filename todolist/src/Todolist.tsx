@@ -1,14 +1,22 @@
 // Vendor
 import React from "react";
-//import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // Internal
 import { AddTask } from "./AddTask.tsx";
 import { Task } from "./Task.tsx";
+import { CtxTodolist } from "./App.tsx";
 import "./Todolist.css";
 
-const Todolist = (props) => {
+const Todolist = (props, context) => {
   const { title, className, setTasks, tasks } = props;
+  let { day } = useParams();
+  //const dayCapitalized = day.charAt(0).toUpperCase() + day.slice(1);
+  if (title) {
+    day = title.toLowerCase();
+  }
+  const dayCapitalized = day.charAt(0).toUpperCase() + day.slice(1);
+  console.log(CtxTodolist.Consumer);
 
   // Hooks
   //const [tasks, setTasks] = React.useState([]);
@@ -55,8 +63,8 @@ const Todolist = (props) => {
 
   return (
     <div className={`todolist ${className}`}>
-      <h2>{title}</h2>
-      <AddTask addTask={addTask} title={title} />
+      <h2>{dayCapitalized}</h2>
+      <AddTask addTask={addTask} title={day} />
       <br />
       {renderTasks()}
     </div>
