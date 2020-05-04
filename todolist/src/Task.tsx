@@ -4,8 +4,8 @@ import "./Task.css";
 function Task(props) {
   // props = { texte : 'jskladjsal' }
   // const texte = props.texte;
-  const { texte, removeTask, upTask, downTask, index } = props;
-
+  const { texte, index } = props;
+  /*
   const handleClickRemove = () => {
     removeTask(index);
   };
@@ -17,14 +17,14 @@ function Task(props) {
   const handleClickDown = () => {
     downTask(index);
   };
-
+*/
   return (
     <div className="task">
       <div>{texte}</div>
       <div className="taskButton">
-        <button onClick={handleClickRemove}>Remove task</button>
-        <button onClick={handleClickUp}>Up</button>
-        <button onClick={handleClickDown}>Down</button>
+        <button>Remove task</button>
+        <button>Up</button>
+        <button>Down</button>
       </div>
     </div>
   );

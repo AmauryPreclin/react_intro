@@ -5,23 +5,23 @@ import { useParams } from "react-router-dom";
 // Internal
 import { AddTask } from "./AddTask.tsx";
 import { Task } from "./Task.tsx";
-import { CtxTodolist } from "./App.tsx";
+import { CtxTodolist } from "./CtxTodolist.tsx";
 import "./Todolist.css";
 
-const Todolist = (props, context) => {
-  const { title, className, setTasks, tasks } = props;
+const Todolist = (props) => {
+  const { className } = props;
   let { day } = useParams();
   //const dayCapitalized = day.charAt(0).toUpperCase() + day.slice(1);
-  if (title) {
-    day = title.toLowerCase();
-  }
   const dayCapitalized = day.charAt(0).toUpperCase() + day.slice(1);
-  console.log(CtxTodolist.Consumer);
+  const { todolists, setTodolists } = React.useContext(CtxTodolist);
+  console.log(todolists[day]);
+  const { tasks } = todolists[day];
 
   // Hooks
   //const [tasks, setTasks] = React.useState([]);
 
   // Handlers
+  /
   const addTask = (taskName: string) => {
     setTasks([...tasks, taskName]);
   };
@@ -47,16 +47,10 @@ const Todolist = (props, context) => {
   };
 
   // Markup
+
   const renderTasks = () => {
     const element = tasks.map((task: string, index: number) => (
-      <Task
-        texte={task}
-        index={index}
-        removeTask={removeTask}
-        upTask={upTask}
-        downTask={downTask}
-        key={index}
-      />
+      <Task texte={task} index={index} key={index} />
     ));
     return element;
   };
@@ -64,7 +58,7 @@ const Todolist = (props, context) => {
   return (
     <div className={`todolist ${className}`}>
       <h2>{dayCapitalized}</h2>
-      <AddTask addTask={addTask} title={day} />
+      {/*<AddTask addTask={addTask} title={day} />*/}
       <br />
       {renderTasks()}
     </div>

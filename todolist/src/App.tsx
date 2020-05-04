@@ -7,21 +7,13 @@ import "./App.css";
 import { Todolist } from "./Todolist.tsx";
 import { WeekDate } from "./WeekDate.tsx";
 import { Header } from "./Header.tsx";
-
-const CtxTodolistDefault = {
-  monday: {
-    tasks: [],
-    setTasks: () => {},
-    moveUp: () => {},
-    moveDown: () => {},
-  },
-};
-
-const CtxTodolist = React.createContext(CtxTodolistDefault);
-const {
-  Provider: CtxTodolistProvider,
-  Consumer: CtxTodolistConsumer,
-} = CtxTodolist;
+import {
+  CtxTodolist,
+  CtxTodolistProvider,
+  CtxTodolistConsumer,
+  CtxTodolistDefault,
+  CtxTodolistTest,
+} from "./CtxTodolist.tsx";
 
 function App() {
   const [tasksMonday, setTasksMonday] = React.useState([]);
@@ -30,64 +22,60 @@ function App() {
   const [tasksThursday, setTasksThursday] = React.useState([]);
   const [tasksFriday, setTasksFriday] = React.useState([]);
 
+  const [todolists, setTodolists] = React.useState(CtxTodolistDefault);
+  const value = { todolists, setTodolists };
+
+  /*
+  const [tasks, setTasks] = React.useState([]);
+  const value = { tasks, setTasks };
+*/
   return (
-    <Router>
-      <div>
-        <Header />
-        {/* A <Switch> looks through its children <Route>s and
+    <CtxTodolistProvider value={value}>
+      <Router>
+        <div>
+          <Header />
+          {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
 
-        <Switch>
-          <Route path="/:day">
-            <CtxTodolistProvider value={CtxTodolistDefault}>
-              <Todolist
-                className="todolistAlone"
-                tasks={tasksMonday}
-                setTasks={setTasksMonday}
-              />
-            </CtxTodolistProvider>
-          </Route>
-          <Route path="/">
-            <WeekDate />
-            <div id="app-container">
-              <Todolist
-                title="Monday"
-                tasks={tasksMonday}
-                setTasks={setTasksMonday}
-              />
-              <Todolist
-                title="Tuesday"
-                tasks={tasksTuesday}
-                setTasks={setTasksTuesday}
-              />
-              <Todolist
-                title="Wednesday"
-                tasks={tasksWednesday}
-                setTasks={setTasksWednesday}
-              />
-              <Todolist
-                title="Thursday"
-                tasks={tasksThursday}
-                setTasks={setTasksThursday}
-              />
-              <Todolist
-                title="Friday"
-                tasks={tasksFriday}
-                setTasks={setTasksFriday}
-              />
-            </div>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+          <Switch>
+            <Route path="/:day">
+              <Todolist className="todolistAlone" />
+            </Route>
+            {/* <Route exact={true} path="/">
+              <WeekDate />
+              <div id="app-container">
+                <Todolist
+                  title="Monday"
+                  tasks={tasksMonday}
+                  setTasks={setTasksMonday}
+                />
+                <Todolist
+                  title="Tuesday"
+                  tasks={tasksTuesday}
+                  setTasks={setTasksTuesday}
+                />
+                <Todolist
+                  title="Wednesday"
+                  tasks={tasksWednesday}
+                  setTasks={setTasksWednesday}
+                />
+                <Todolist
+                  title="Thursday"
+                  tasks={tasksThursday}
+                  setTasks={setTasksThursday}
+                />
+                <Todolist
+                  title="Friday"
+                  tasks={tasksFriday}
+                  setTasks={setTasksFriday}
+                />
+              </div>
+            </Route> */}
+          </Switch>
+        </div>
+      </Router>
+    </CtxTodolistProvider>
   );
 }
 
 export default App;
-
-export {
-  CtxTodolist,
-  CtxTodolistConsumer,
-  CtxTodolistProvider,
-  CtxTodolistDefault,
-};
