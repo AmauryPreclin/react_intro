@@ -6,16 +6,13 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
+import { useApolloClient, useMutation } from "@apollo/react-hooks";
 
 // Internal
 import "./App.css";
 import { Todolist } from "./Todolist.js";
 import { WeekDate } from "./WeekDate.js";
 import { Header } from "./Header.js";
-
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
 
 function App() {
   const [tasksMonday, setTasksMonday] = React.useState([]);

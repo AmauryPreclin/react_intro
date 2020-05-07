@@ -1,10 +1,12 @@
 import React from "react";
+import { useMutation } from "@apollo/react-hooks";
 
 const AddTask = (props) => {
   const { addTask, title } = props;
 
   // Hooks
   const [taskName, setTaskName] = React.useState("");
+  const [id, setId] = React.useState(0);
 
   // Handlers
   const handleChange = (event) => {
@@ -12,8 +14,9 @@ const AddTask = (props) => {
   };
 
   const handleClick = () => {
-    if (taskName) addTask(taskName);
+    if (taskName) addTask(taskName, id);
     setTaskName("");
+    setId(id + 1);
   };
 
   return (

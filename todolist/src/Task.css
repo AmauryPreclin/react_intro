@@ -10,3 +10,17 @@
 .task:hover {
   border: black solid 1px;
 }
+
+.task {
+  animation-name: opacity;
+  animation-duration: 2s;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}

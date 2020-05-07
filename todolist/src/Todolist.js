@@ -1,6 +1,7 @@
 // Vendor
 import React from "react";
 import { useLocation, useParams } from "react-router-dom";
+import gql from "graphql-tag";
 
 // Internal
 import { AddTask } from "./AddTask.js";
@@ -9,16 +10,31 @@ import "./Todolist.css";
 
 const Todolist = (props) => {
   const { title, className, setTasks, tasks } = props;
+  let { day } = useParams();
+  if (title) {
+    day = title.toLowerCase();
+  }
+  const dayCapitalized = day.charAt(0).toUpperCase() + day.slice(1);
 
   // Hooks
   //const [tasks, setTasks] = React.useState([]);
 
   // Handlers
-  const addTask = (taskName) => {
-    setTasks([...tasks, taskName]);
+  const addTask = (taskName, id) => {
+    //const len = tasks.length + 1;
+    const task = { id: id, text: taskName };
+    setTasks([...tasks, task]);
   };
 
   const removeTask = (index) => {
+    const element = document.getElementById(index + day);
+    //element.style.animationName = "remove-task";
+    //element.style.animationDelay = "2s";
+    element.className = element.className + " remove-task";
+    setTimeout(removeTaskCompletely, 2000);
+  };
+
+  const removeTaskCompletely = (index) => {
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
     setTasks([...newTasks]);
@@ -42,7 +58,8 @@ const Todolist = (props) => {
   const renderTasks = () => {
     const element = tasks.map((task, index) => (
       <Task
-        texte={task}
+        texte={task.text}
+        id={index + day}
         index={index}
         removeTask={removeTask}
         upTask={upTask}
@@ -55,8 +72,8 @@ const Todolist = (props) => {
 
   return (
     <div className={`todolist ${className}`}>
-      <h2>{title}</h2>
-      <AddTask addTask={addTask} title={title} />
+      <h2>{dayCapitalized}</h2>
+      <AddTask addTask={addTask} title={day} />
       <br />
       {renderTasks()}
     </div>
