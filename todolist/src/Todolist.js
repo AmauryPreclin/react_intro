@@ -27,14 +27,10 @@ const Todolist = (props) => {
   };
 
   const removeTask = (index) => {
-    const element = document.getElementById(index + day);
+    //const element = document.getElementById(index + day);
     //element.style.animationName = "remove-task";
     //element.style.animationDelay = "2s";
-    element.className = element.className + " remove-task";
-    setTimeout(removeTaskCompletely, 2000);
-  };
-
-  const removeTaskCompletely = (index) => {
+    //element.className = element.className + " remove-task";
     const newTasks = [...tasks];
     newTasks.splice(index, 1);
     setTasks([...newTasks]);
@@ -59,7 +55,6 @@ const Todolist = (props) => {
     const element = tasks.map((task, index) => (
       <Task
         texte={task.text}
-        id={index + day}
         index={index}
         removeTask={removeTask}
         upTask={upTask}

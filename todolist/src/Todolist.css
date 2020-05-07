@@ -16,17 +16,3 @@ button:hover {
   display: flex;
   justify-content: flex-end;
 }
-
-.remove-task {
-  animation-name: remove-task;
-  animation-duration: 2s;
-}
-
-@keyframes remove-task {
-  from {
-    opacity: 100%;
-  }
-  to {
-    opacity: 0%;
-  }
-}
