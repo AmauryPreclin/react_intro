@@ -1,7 +1,6 @@
 // Vendor
 import React from "react";
-import { useLocation, useParams } from "react-router-dom";
-import gql from "graphql-tag";
+import { useParams } from "react-router-dom";
 
 // Internal
 import { AddTask } from "./AddTask.js";
